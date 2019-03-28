@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -13,7 +14,13 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
+    public void onClick(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     public void logInClicked(View view) {
         EditText emailEditText = findViewById(R.id.emailET);
@@ -39,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        TextView loginTextView = findViewById(R.id.signupTV);
+        loginTextView.setOnClickListener(this);
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }
