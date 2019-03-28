@@ -16,6 +16,12 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public void showUserAccountActivity() {
+        Intent intent = new Intent(getApplicationContext(), UserAccountActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void onClick(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
@@ -34,6 +40,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 public void done(ParseUser user, ParseException e) {
                     if (user != null) {
                         Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
+                        showUserAccountActivity();
                     } else {
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -49,6 +56,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         TextView loginTextView = findViewById(R.id.signupTV);
         loginTextView.setOnClickListener(this);
+
+        if (ParseUser.getCurrentUser() != null) {
+            showUserAccountActivity();
+        }
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }
