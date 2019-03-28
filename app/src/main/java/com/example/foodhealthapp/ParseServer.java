@@ -9,10 +9,10 @@ public class ParseServer extends Application {
     public void onCreate() {
         super.onCreate();
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId("YOUR_APP_ID")
+                .applicationId("5eeaab6d5610a50f137edb87aa9e0adf3f7e5a2f")
                 // if defined
-                .clientKey("YOUR_CLIENT_KEY")
-                .server("http://localhost:1337/parse/")
+                .clientKey("61350589972f1fbef4a952b89db513024c3210d4")
+                .server("http://34.242.186.59:80/parse/")
                 .build()
         );
 
