@@ -45,7 +45,7 @@ public class UserAccountActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -67,6 +67,7 @@ public class UserAccountActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+        navigationView.setCheckedItem(R.id.nav_dashboard);
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }

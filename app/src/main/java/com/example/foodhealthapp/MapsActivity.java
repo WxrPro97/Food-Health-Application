@@ -94,6 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         return true;
                     }
                 });
+        navigationView.setCheckedItem(R.id.nav_home);
     }
 
     @Override
