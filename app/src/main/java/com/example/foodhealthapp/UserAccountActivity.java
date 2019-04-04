@@ -1,17 +1,23 @@
 package com.example.foodhealthapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
 public class UserAccountActivity extends AppCompatActivity {
+
+    private DrawerLayout drawerLayout;
 
     public void logOutClicked(View view) {
         ParseUser.getCurrentUser().logOut();
@@ -37,6 +43,38 @@ public class UserAccountActivity extends AppCompatActivity {
         String emailString = (String) currentUser.get("email");
         displayEmail.setText(emailString);
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        int id = menuItem.getItemId();
+
+                        if (id == R.id.nav_home) {
+                            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                            startActivity(intent);
+                        } else if (id == R.id.nav_dashboard) {
+                            drawerLayout.closeDrawer(GravityCompat.START);
+                        }
+
+                        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                        drawer.closeDrawer(GravityCompat.START);
+                        return true;
+                    }
+                });
+
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

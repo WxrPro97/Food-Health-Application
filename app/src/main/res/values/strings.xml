@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">FoodHealthApp</string>
     <string name="title_activity_maps">Map</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="home">Home</string>
 </resources>
