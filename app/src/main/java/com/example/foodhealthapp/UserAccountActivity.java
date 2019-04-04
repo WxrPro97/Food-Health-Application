@@ -53,10 +53,13 @@ public class UserAccountActivity extends AppCompatActivity {
                         int id = menuItem.getItemId();
 
                         if (id == R.id.nav_home) {
-                            Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-                            startActivity(intent);
+                            finish();
                         } else if (id == R.id.nav_dashboard) {
                             drawerLayout.closeDrawer(GravityCompat.START);
+                        } else if (id == R.id.nav_about) {
+                            Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
 
                         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
