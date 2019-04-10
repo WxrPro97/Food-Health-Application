@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -54,11 +56,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    public void updateMap(Location location) {
+    public void updateMap(final Location location) {
         LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.clear();
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
         mMap.addMarker(new MarkerOptions().position(userLocation).title("You are Here!").icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker)));
+
+        FloatingActionButton FAB = findViewById(R.id.myLocationButton);
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateMap(location);
+            }
+        });
+
+        LatLng restaurantMarker = new LatLng(53.347805, -6.243956);
+        mMap.addMarker(new MarkerOptions().position(restaurantMarker).title("New Restaurant"));
     }
 
     @Override
