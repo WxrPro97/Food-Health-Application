@@ -41,6 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+        //Check if user has granted location permission
         if (requestCode == 1) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
@@ -57,11 +58,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void updateMap(final Location location) {
+        //Users current location and marker
         LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.clear();
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
         mMap.addMarker(new MarkerOptions().position(userLocation).title("You are Here!").icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker)));
 
+        //Center map back to users location
         FloatingActionButton FAB = findViewById(R.id.myLocationButton);
         FAB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +73,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        //Dummy marker
         LatLng restaurantMarker = new LatLng(53.347805, -6.243956);
         mMap.addMarker(new MarkerOptions().position(restaurantMarker).title("New Restaurant"));
     }
@@ -129,6 +133,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+                //Load users location on map
                 updateMap(location);
             }
 
@@ -148,6 +153,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
+        //Android location permission (GPS_PROVIDER works on Emulator while NETWORK_PROVIDER works on the Device)
         if (Build.VERSION.SDK_INT < 23) {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         } else {
