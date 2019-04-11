@@ -34,7 +34,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     LocationManager locationManager;
     LocationListener locationListener;
-    private GoogleMap mMap;
+    public static GoogleMap mMap;
     private DrawerLayout drawerLayout;
 
     @Override
@@ -63,6 +63,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.clear();
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
         mMap.addMarker(new MarkerOptions().position(userLocation).title("You are Here!").icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker)));
+
+        // Restaurant markers
+        new MarkerTask().execute();
 
         //Center map back to users location
         FloatingActionButton FAB = findViewById(R.id.myLocationButton);
