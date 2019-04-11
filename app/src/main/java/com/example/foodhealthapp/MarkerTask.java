@@ -66,7 +66,8 @@ public class MarkerTask extends AsyncTask<Void, Void, String> {
                 // Create a marker for each restaurant in the JSON data.
                 MapsActivity.mMap.addMarker(new MarkerOptions()
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.rest_marker))
-                        .snippet( "Allergies: " + jsonObj.getString("allergies") + "\n" + "Cuisine: " + jsonObj.getString("cuisine"))
+                        .snippet( "Cuisine: " + jsonObj.getString("cuisine") + "\n" + "Allergies: " + jsonObj.getString("allergies") + "\n" +
+                                "Nutrition: " + jsonObj.getString("nutrition") + "\n" + "Calories: " + jsonObj.getString("calories"))
                         .title(jsonObj.getString("name"))
                         .position(latLng));
             }
