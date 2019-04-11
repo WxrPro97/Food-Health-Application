@@ -60,6 +60,10 @@ public class UserAccountActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                             startActivity(intent);
                             finish();
+                        } else if (id == R.id.nav_feedback) {
+                            Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
 
                         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -36,6 +36,10 @@ public class AboutActivity extends AppCompatActivity {
                             finish();
                         } else if (id == R.id.nav_about) {
                             drawerLayout.closeDrawer(GravityCompat.START);
+                        } else if (id == R.id.nav_feedback) {
+                            Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
 
                         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

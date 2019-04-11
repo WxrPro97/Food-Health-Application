@@ -104,6 +104,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         } else if (id == R.id.nav_about) {
                             Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                             startActivity(intent);
+                        } else if (id == R.id.nav_feedback) {
+                            Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
+                            startActivity(intent);
                         }
 
                         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
