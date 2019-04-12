@@ -73,7 +73,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
                 //To fill the fields in the email client
                 Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"x16146301@student.ncirl.ie"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 intent.putExtra(Intent.EXTRA_TEXT, message);
 
