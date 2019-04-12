@@ -67,6 +67,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Restaurant markers
         new MarkerTask().execute();
 
+        // Custom Google maps infoWindow
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(this));
+
         //Center map back to users location
         FloatingActionButton FAB = findViewById(R.id.myLocationButton);
         FAB.setOnClickListener(new View.OnClickListener() {
