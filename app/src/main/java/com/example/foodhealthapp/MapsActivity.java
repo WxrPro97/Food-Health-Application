@@ -78,10 +78,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 updateMap(location);
             }
         });
-
-        //Dummy marker
-        LatLng restaurantMarker = new LatLng(53.347805, -6.243956);
-        mMap.addMarker(new MarkerOptions().position(restaurantMarker).title("New Restaurant"));
     }
 
     @Override
